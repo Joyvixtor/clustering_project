@@ -23,7 +23,12 @@ O <i>Elbow Method</i> é capaz de testar a variação que ocorre entre os dados 
 Além do Elbow Method, o <b>Silhouette Method</b> (ou Método Silhouette) também é uma outra possibilidade para achar o número ótimo de clusters em um conjuntod de dados. O algoritmo realiza esta operação medindo a distância de um determinado ponto de um aglomerado para outro aglomerado. A <i>range</i> do método silhouette varia de -1 para +1, onde as extremidades indicam que os pontos de cada cluster estão muito afastados, enquanto valores próximos à 0 indicam que os pontos de cada cluster estão muito próximos ou criando intersecções entre si. 
 
 ## KMedoids
+Assim como o algoritmo KMeans, o KMedoids também é responsável por particionar o conjunto de datos em aglomerados de variáveis semelhantes entre si. Contudo, existem diferenças cruciais entre os algoritmos que fazem com que o cálculo dos centróides e sua plotagem gráfica seja um pouco diferente.
+- Os centroids no método KMeans é calculado através da média entre todos os <i>data points</i> de um aglomerado. Já o centróide de um cluster no método KMedoids é, literalmente, um determinado ponto de dado do cluster.
+- O método KMean usa os conceitos Euclidianos para realizar os cálculos de distância entre os pontos de dados e o centróide de um cluster. Já o método KMedoids usa a soma das diferenças absolutas entre cada coordenada.
 ## DBSCAN
+O algoritmo DBSCAN realiza o agrupamento de dados em <i> clusters</i> através do conceito de densidade das informações contidas em um dataset. O método cria suposições para definir um aglomerado: para o DBSCAN, um cluster é uma região densa do gráfico que está separado por regiões de menor densidade. É como pensar em uma ilha (região muito densa) cercada pela água (áreas de pouca densidade.) <br>
+O algoritmo apresenta duas variáveis importantes: o Epsilon, que determina um raio a ser criado em torno de cada ponto de dados para a verificação de densidade; e os minPoints, que estabelece o número mínimo de pontos de dados dentro de um círculo para que aquela região seja considerada central. 
 
 # Metodologia
 
