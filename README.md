@@ -87,6 +87,53 @@ centroids = km.cluster_centers_
 Com o valor do centro dos cluster (guardados na variável <i>centroids</i>), podemos plotar os aglomerados e seus devidos centroides:
 <img
     src = "images/kmean_plot.png">
+
+## KMedoids
+Para o cálculo dos KMedoids, foi usado o método <i>KMedoids</i> da biblioteca <i>sklearn</i>. A diferença deste algoritmo para o KMeans é que, neste caso, os centroides são, de fato, representados por um ponto do aglomerado:
+
+```Python
+kmedoids = KMedoids(n_clusters=3, random_state=1).fit(df)
+
+kmds_labels = kmedoids.fit_predict(df)
+kmds_center = kmedoids.cluster_centers_
+```
+Como resultado, tivemos a seguinte plotagem que apresenta semelhanças ao KMeans, mas com sutis diferenças na posição dos centroides: 
+<img
+    src = "images/kmedoids_plot.png">
+
+## DBSCAN
+Por fim, o último algoritmo de clustering utilizado foi o de DBSCAN, que utiliza o conceito de densidade para estabelecer os pontos de dados semelhantes e capazes de formar um cluster. Antes de rodar o método, deve-se encontrar o valor de Epsilon (eps):
+
+```Python
+neighb = NearestNeighbors(n_neighbors=2)
+nbrs = neighb.fit(df)
+dist, ind = nbrs.kneighbors(df)
+
+dist = np.sort(dist, axis = 0)
+dist = dist[:, 1]
+
+plt.figure(figsize=(6,6))
+plt.plot(dist)
+plt.show()
+```
+<img
+    src = "images/db_line.png">
+Após encontrar o valor <i>eps</i>, é possível rodarmos o algoritmo e realizar a plotagem do gráfico:
+
+```Python
+from sklearn.cluster import KMeans, DBSCAN
+
+dbs_cluster = DBSCAN(eps = 0.4, min_samples= 4).fit(df)
+
+dbs_labels = dbs_cluster.labels_
+
+plt.figure(figsize=(6,6))
+plt.scatter(df.iloc[:, 1], df.iloc[:, 0], c = dbs_labels, cmap='plasma')
+plt.show()
+```
+<img
+    src = "images/db_graph.png">
+
 # Resultados
 
 # Conclusões 
