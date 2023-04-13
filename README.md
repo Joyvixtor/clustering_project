@@ -31,7 +31,62 @@ O algoritmo DBSCAN realiza o agrupamento de dados em <i> clusters</i> através d
 O algoritmo apresenta duas variáveis importantes: o Epsilon, que determina um raio a ser criado em torno de cada ponto de dados para a verificação de densidade; e os minPoints, que estabelece o número mínimo de pontos de dados dentro de um círculo para que aquela região seja considerada central. 
 
 # Metodologia
+A primeira etapa no desenvolvimento do projeto foi, obviamente, preparar o banco de dados escolhidos para a análise nos métodos apresentados em sala de aula (KMeans, KMedoids, etc):
+``` Python
+df = pd.read_csv("https://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data", usecols=[1, 2], names=['Alcohol', 'Malic acid'])
+```
+O código acima utiliza um dos métodos da biblioteca <i>Pandas</i> para poder exportar o Dataset da web para ser rodado no código. <i>usecols</i> é utilizado para filtrar a quantidade de colunas, pois a equipe do projeto tinha interesse em trabalhar com um array bidimensional por fins de plotagem. <br>
+Após selecionados os dados necessários para a realização do projeto, os métodos <i>Elbow</i> e <i>Silhouette</i> foram utilizados para encontrar o número ótimo de K-Clusters a serem selecionados no algoritmo KMeans:
+### Elbow method code
+Como explicado anteriormente, o Elbow Method procura achar um ponto do gráfico de K Values que seja semelhante a forma de um cotovelo. Isto só é possivel ao rodar um loop <i>for</i> de valores KMeans presentes em uma faixa de 1 a 10 para encontrar qual é o perfeito:
+```Python
+sse = [] #list of the sum of squared distance between the data points in each cluster
+listk = list(range(1,10))
 
+#interact with each k number possibility to find an elbow curve
+for k in listk:
+    kmeans = KMeans(n_clusters=k)
+    kmeans.fit(df)
+    sse.append(kmeans.inertia_)
+
+``` 
+Usando o método KElbowVisualizer:
+
+```Python
+model = KMeans()
+visualizer = KElbowVisualizer(model, k=(1,10))
+``` 
+No final, a plotagem gráfico do método Elbow foi a seguinte:
+<img
+    src = "images/elbow.png">
+
+### Silhouette method code
+Assim como no método Elbow, o método Silhouette também é utilizado para encontrar o K Value a ser utilizado no algoritmo KMeans. O código abaixo utiliza o método <i>metrics.silhouette_score</i> para computar os valores e printá-los logo em seguida:
+```Python
+for i in range(2,10): #loop para testar cada valor de KMean entre 2 e 10 paa descobrir qual eh o K perfeito
+    kmean_cluster = KMeans(n_clusters= i)
+    preds = kmean_cluster.fit_predict(df)
+    kmeans_center = kmean_cluster.cluster_centers_
+
+    score = metrics.silhouette_score(df, preds)
+    print(f'The cluster number {i} has a silhouette value equal to {score}')
+```
+Os valores Silhouette encontrados foram:
+<img
+src = "images/silh_values.png">
+A partir dos resultados encontrados através de ambos os métodos, é possível afirmar que o K Value perfeito é igual à 3.
+
+## KMeans
+Ao achar o K Value a ser utilizado no método KMeans, a aplicação no código foi a seguinte:
+```Python
+km = KMeans(n_clusters=3).fit(df)
+cluster_labels = km.fit_predict(df)
+
+centroids = km.cluster_centers_
+``` 
+Com o valor do centro dos cluster (guardados na variável <i>centroids</i>), podemos plotar os aglomerados e seus devidos centroides:
+<img
+    src = "images/kmean_plot.png">
 # Resultados
 
 # Conclusões 
