@@ -135,5 +135,6 @@ plt.show()
     src = "images/db_graph.png">
 
 # Resultados
+Os resultados encontrados pelo método Elbow e pelo Silhouette definiram que o melhor K Value de Cluster é igual a 3, como definido anteriormente. Através da visualização dos dados plotados, notam-se três grandes aglomerados de dados e seus respectivos centroides.
 
 # Conclusões 
