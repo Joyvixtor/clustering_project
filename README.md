@@ -1,12 +1,14 @@
+<div style="text-align: justify">
+
 # Introdução
-<p align="justify">Na descrição do projeto Clustering, a primeira etapa a ser realizada pela equipe é a escolha de um banco de dados útil do <i>UCI Machine Learning Repository</i>. O Dataset escolhido para este trabalho específico em foi oi "<i>Wine Data Set</i>. Para acessar a página principal do repositório, <a href= "https://archive.ics.uci.edu/ml/datasets/wine"> clique aqui </a>. <br>
+Na descrição do projeto Clustering, a primeira etapa a ser realizada pela equipe é a escolha de um banco de dados útil do <i>UCI Machine Learning Repository</i>. O Dataset escolhido para este trabalho específico em foi oi "<i>Wine Data Set</i>. Para acessar a página principal do repositório, <a href= "https://archive.ics.uci.edu/ml/datasets/wine"> clique aqui </a>. <br>
 O banco de dados em questão tem como finalidade analisar quimicamente alguns atributos de diferentes vinhos. Os dados analisados podem servir para descobrir qual é a origem exata do produto. No total,  13 variáveis foram disponibilizadas para análise,  mas a equipe escolheu apenas 2 principais para realizar o tratamento dos dados: <i>Alcohol</i> e <i>Malic Acid</i>.
 
 <img
     src=images/dataset_table.png>
 <br>
 Após a filtragem dos dados a serem utilizados durante o projeto, a equipe definiu quais seriam os métodos utilizados para destacar e dar sentido às informações que foram colhidas do <i>Dataset</i>. Os mecanismos de análise foram estabelecidos e as suas bibliotecas em questão. Ao longo do relatório, as definições específicas ficarão mais claras através da utilização de trechos do código e imagens dos gráficos plotados.
-</p>
+
 
 # Fundamentos
 Os modelos utilizados para o tratamento e análise dos dados foram:
@@ -145,3 +147,4 @@ Por fim, o DBSCAN demonstra uma forma diferente de olhar para a análise de clus
 Os algoritmos de clustering KMeans e KMedoids podem não ser boas alternativas para analisar os dados presentes no wine dataset. O número de clusters indicado pelo Elbow e pelo Silhouette é o perfeito (k = 3) para a situação, mas os aglomerados estão exageradamente próximos entre si. <br>
 Para que uma análise de clustering seja boa o suficiente, o espaço intracluster (entre os pontos de um mesmo aglomerado) deve ser o mínimo possível e o intercluster (entre os pontos de diferentes aglomerados) deve ser o máximo possível. O que se percebe, na verdade, é que os três clusters estão muito próximos entre si. Ou seja, não há uma diferença significativa entre os pontos de dados apresentados.<br>
 A análise pode ter sido mais significativa a partir do DBSCAN, que apresentou dois aglomerados dentro do banco de dados. Há um aglomerado gigantesco (na cor rosa), enquanto há um bem menor (na cor amarela), que representam pontos de densidade. Os pontos azuis indicam os noise points, ou seja, dados que “soltos” que não conseguem se ligar a nenhum cluster.
+</div>
