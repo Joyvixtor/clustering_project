@@ -74,8 +74,10 @@ for i in range(2,10): #loop para testar cada valor de KMean entre 2 e 10 paa des
     print(f'The cluster number {i} has a silhouette value equal to {score}')
 ```
 Os valores Silhouette encontrados foram:
+
 <img
 src = "images/silh_values.png">
+
 A partir dos resultados encontrados através de ambos os métodos, é possível afirmar que o K Value perfeito é igual à 3.
 
 ## KMeans
@@ -120,6 +122,7 @@ plt.show()
 ```
 <img
     src = "images/db_line.png">
+
 Após encontrar o valor <i>eps</i>, é possível rodarmos o algoritmo e realizar a plotagem do gráfico:
 
 ```Python
@@ -147,4 +150,5 @@ Por fim, o DBSCAN demonstra uma forma diferente de olhar para a análise de clus
 Os algoritmos de clustering KMeans e KMedoids podem não ser boas alternativas para analisar os dados presentes no wine dataset. O número de clusters indicado pelo Elbow e pelo Silhouette é o perfeito (k = 3) para a situação, mas os aglomerados estão exageradamente próximos entre si. <br>
 Para que uma análise de clustering seja boa o suficiente, o espaço intracluster (entre os pontos de um mesmo aglomerado) deve ser o mínimo possível e o intercluster (entre os pontos de diferentes aglomerados) deve ser o máximo possível. O que se percebe, na verdade, é que os três clusters estão muito próximos entre si. Ou seja, não há uma diferença significativa entre os pontos de dados apresentados.<br>
 A análise pode ter sido mais significativa a partir do DBSCAN, que apresentou dois aglomerados dentro do banco de dados. Há um aglomerado gigantesco (na cor rosa), enquanto há um bem menor (na cor amarela), que representam pontos de densidade. Os pontos azuis indicam os noise points, ou seja, dados que “soltos” que não conseguem se ligar a nenhum cluster.
+
 </div>
