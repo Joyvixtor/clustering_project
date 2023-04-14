@@ -58,7 +58,7 @@ Usando o método KElbowVisualizer:
 model = KMeans()
 visualizer = KElbowVisualizer(model, k=(1,10))
 ```
-No final, a plotagem gráfico do método Elbow foi a seguinte:
+No final, a plotagem gráfica do método Elbow foi a seguinte:
 <img
     src = "images/elbow.png">
 
